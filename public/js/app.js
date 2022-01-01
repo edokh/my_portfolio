@@ -22301,7 +22301,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section id=\"hero\" class=\"d-flex align-items-center\"><div class=\"container d-flex flex-column align-items-center\" data-aos=\"zoom-in\" data-aos-delay=\"100\"><h1 class=\"text-info\">Edo Khudeeda</h1><h2 style=\"color:white;text-shadow:2px 1px 15px #000000;\"> I&#39;m a professional software developer from Erbil </h2><a href=\"about.html\" class=\"btn-about\">About Me</a></div></section>", 1);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div id=\"hero\" class=\"d-flex align-items-center\" style=\"background:url(https://images.unsplash.com/photo-1552872673-9b7b99711ebb?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80);height:57rem;\"><div class=\"container d-flex flex-column align-items-center\" data-aos=\"zoom-in\" data-aos-delay=\"100\"><h1 class=\"text-info\">Edo Khudeeda</h1><h2 style=\"color:white;text-shadow:2px 1px 15px #000000;\"> I&#39;m a professional software developer from Erbil </h2><a href=\"about.html\" class=\"btn btn-info\">About Me</a></div></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_navbar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("navbar");

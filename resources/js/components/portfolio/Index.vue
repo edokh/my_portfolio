@@ -1,7 +1,15 @@
 <template>
   <navbar />
 
-  <section id="hero" class="d-flex align-items-center">
+  <div
+    id="hero"
+    class="d-flex align-items-center"
+    style="
+      background: url(https://images.unsplash.com/photo-1552872673-9b7b99711ebb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80)
+        top right;
+      height: 57rem;
+    "
+  >
     <div
       class="container d-flex flex-column align-items-center"
       data-aos="zoom-in"
@@ -11,9 +19,9 @@
       <h2 style="color: white; text-shadow: 2px 1px 15px #000000">
         I'm a professional software developer from Erbil
       </h2>
-      <a href="about.html" class="btn-about">About Me</a>
+      <a href="about.html" class="btn btn-info">About Me</a>
     </div>
-  </section>
+  </div>
 
   <!-- </section>
     <section id="hero" class="d-flex align-items-center">
