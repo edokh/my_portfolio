@@ -15,10 +15,12 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('address')->nullable();
-            $table->string('website')->nullable();
+            $table->string("title");
+            $table->text("description");
+            $table->string("image")->nullable();
+            $table->string("category")->nullable();
+            $table->string("client")->nullable();
+            $table->string("project_url")->default("#");
             $table->timestamps();
         });
     }

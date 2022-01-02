@@ -1,9 +1,9 @@
 <template>
-  <navbar />
   <section id="about" class="about">
     <div class="container" data-aos="fade-up">
       <div class="section-title">
-        <h2>About</h2>
+        <h2>ABOUT</h2>
+
         <p>
           As a full-time Software developer, I will dedicate all my hours to
           you. I'm so young and creative, and willing to solve any problem as
@@ -32,36 +32,36 @@
             </p> -->
           <div class="row">
             <div class="col-lg-6">
-              <ul class="pl-0">
-                <li class="mb-2">
+              <ul>
+                <li>
                   <i class="bi bi-rounded-right"></i>
                   <strong>Birthday:</strong> 5 July 1996
                 </li>
-                <li class="mb-2">
+                <li>
                   <i class="bi bi-rounded-right"></i>
                   <strong>Website:</strong> www.webedo.com
                 </li>
-                <li class="mb-2">
+                <li>
                   <i class="bi bi-rounded-right"></i>
                   <strong>Phone:</strong> +964 780 060 7869
                 </li>
-                <li class="mb-2">
+                <li>
                   <i class="bi bi-rounded-right"></i>
                   <strong>City:</strong> Erbil, Iraq
                 </li>
               </ul>
             </div>
             <div class="col-lg-6">
-              <ul class="ml-0">
-                <li class="mb-2">
+              <ul>
+                <li>
                   <i class="bi bi-rounded-right"></i>
                   <strong>Degree:</strong> Bachelor's in Computer Science
                 </li>
-                <li class="mb-2">
+                <li>
                   <i class="bi bi-rounded-right"></i>
                   <strong>E-mail:</strong> eido.khudyda@gmail.com
                 </li>
-                <li class="mb-2">
+                <li>
                   <i class="bi bi-rounded-right"></i>
                   <strong>Freelance:</strong> Available
                 </li>
@@ -78,13 +78,10 @@
       </div>
     </div>
   </section>
-  <!-- End About Section -->
-
-  <!-- ======= Skills Section ======= -->
   <section id="skills" class="skills">
     <div class="container" data-aos="fade-up">
       <div class="section-title">
-        <h2>Skills</h2>
+        <h2 class="border-b-4 border-blue-500 w-20 mx-auto my-8">SKILLS</h2>
         <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
             consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
             in iste officiis commodi quidem hic quas.</p> -->
@@ -236,38 +233,5 @@
       </div>
     </div>
   </section>
-  <!-- End Skills Section -->
+  <!-- navbar section -->
 </template>
-
-<script>
-// import useCompanies from "../../composables/companies";
-// import { onMounted } from "vue";
-import navbar from "../portfolio/Navbar";
-
-export default {
-  components: {
-    navbar,
-  },
-  setup() {
-    //     const { companies, getCompanies, destroyCompany } = useCompanies();
-    //     onMounted(getCompanies);
-    //     const deleteCompany = async (id) => {
-    //       if (!window.confirm("Are you sure?")) {
-    //         return;
-    //       }
-    //       await destroyCompany(id);
-    //       await getCompanies();
-    //     };
-    // return {
-    //   companies,
-    //   deleteCompany,
-    // };
-  },
-};
-</script>
-<style>
-.progress {
-  margin-top: 12px !important;
-}
-</style>
-

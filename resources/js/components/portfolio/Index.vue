@@ -5,13 +5,14 @@
     id="hero"
     class="d-flex align-items-center"
     style="
-      background: url(https://images.unsplash.com/photo-1552872673-9b7b99711ebb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80)
+      background: url(https://scontent.febl5-1.fna.fbcdn.net/v/t1.6435-9/154107852_2955431731345277_2047905353800600678_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=e3f864&_nc_eui2=AeF3zsBSX9FSGqwzU4ga4p6Gm5NGfGgdxembk0Z8aB3F6U4YT0SIuF8UwkQqauHX3QE-VF44Nn9N3RJlVLVOsfsZ&_nc_ohc=2jMhJUj0RskAX-KjVkq&_nc_ht=scontent.febl5-1.fna&oh=00_AT80DthP3jTCSn6617Hrakcb3zfUR8CZk8yvMlF8adHJ8w&oe=61F7D267)
         top right;
-      height: 57rem;
+      background-repeat: no-repeat;
+      background-size: cover;
     "
   >
     <div
-      class="container d-flex flex-column align-items-center"
+      class="container d-flex flex-column align-items-center py-96"
       data-aos="zoom-in"
       data-aos-delay="100"
     >

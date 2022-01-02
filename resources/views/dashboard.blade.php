@@ -4,5 +4,5 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-<router-view />
+<router-view class="bg-white" />
 </x-app-layout>
