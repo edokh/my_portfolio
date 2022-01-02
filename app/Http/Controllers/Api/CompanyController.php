@@ -26,11 +26,17 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CompanyRequest $request)
+    public function store(Request $request)
     {
-        $company = Company::create($request->validated());
-        \Log::info($company);
-        return new CompanyResource($company);
+        \Log::info("12345678\n");
+        \Log::info($request->all());
+
+        // $image = request()->file('image');
+        // $imageName = $image->getClientOriginalName();
+        // $imageName = time() . '_' . $imageName;
+        // $image->move(public_path('/images'), $imageName);
+        // $company = Company::create($request->form);
+        // return new CompanyResource($company);
     }
 
     /**

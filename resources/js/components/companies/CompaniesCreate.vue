@@ -21,7 +21,12 @@
     </div>
   </div>
 
-  <form class="space-y-6" @submit.prevent="saveCompany">
+  <form
+    method="POST"
+    class="space-y-6"
+    enctype="multipart/form-data"
+    @submit.prevent="saveCompany"
+  >
     <div class="space-y-4 rounded-md shadow-sm">
       <div>
         <label for="title" class="block text-sm font-medium text-gray-700"
@@ -131,24 +136,6 @@
           >Category</label
         >
         <div class="mt-1">
-          <!-- <input
-            type="text"
-            name="website"
-            id="website"
-            class="
-              block
-              mt-1
-              w-full
-              rounded-md
-              border-gray-300
-              shadow-sm
-              focus:border-indigo-300
-              focus:ring
-              focus:ring-indigo-200
-              focus:ring-opacity-50
-            "
-            v-model="form.website"
-          /> -->
           <select
             name="category"
             id="category"
@@ -171,14 +158,22 @@
           </select>
         </div>
       </div>
-      <div>
-        <label for="website" class="block text-sm font-medium text-gray-700"
-          >Image</label
-        >
-        <div class="mt-1">
-          <input type="file" @change="onFileSelected" />
-        </div>
-        <!-- <button>Upload</button> -->
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Image</label>
+        <input
+          @change="onFileSelected"
+          class="form-control"
+          type="file"
+          id="formFile"
+        />
+      </div>
+      <div v-if="imagePreview">
+        <img
+          :src="imagePreview"
+          alt=""
+          class="figure-img img-fluid rounded"
+          style="max-height: 100px"
+        />
       </div>
     </div>
 
@@ -210,11 +205,10 @@
       Create
     </button>
   </form>
-  {{ form }}
 </template>
 
 <script>
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import useCompanies from "../../composables/companies";
 
 export default {
@@ -227,17 +221,23 @@ export default {
       client: "",
       project_url: "",
     });
-    let selectedFile = reactive(null);
+    let file = reactive(null);
+    let imagePreview = ref(null);
 
-    const { errors, storeCompany } = useCompanies();
+    const { errors, storeCompany, submitFile } = useCompanies();
 
     const saveCompany = async () => {
-      await storeCompany({ ...form });
+      submitFile();
+      await storeCompany({ form: form, file });
     };
     function onFileSelected(event) {
-      // selectedFile=event.target.files[0]
+      file = event.target.files[0];
       form.image = event.target.files[0].name;
-      console.log(form.image);
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (event) => {
+        imagePreview.value = event.target.result;
+      };
     }
 
     return {
@@ -245,6 +245,8 @@ export default {
       errors,
       saveCompany,
       onFileSelected,
+      imagePreview,
+      file,
     };
   },
 };

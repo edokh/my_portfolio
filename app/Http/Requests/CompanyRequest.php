@@ -23,13 +23,13 @@ class CompanyRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title' => ['required'],
-            'project_url' => ['required', 'url'],
-            'description' => ['string'],
-            'client' => ['string'],
-            'category' => ['string'],
-            'image' => 'string'
-        ];
+        // return [
+        //     'title' => ['string'],
+        //     'project_url' => ['url'],
+        //     'description' => ['string'],
+        //     'client' => ['string'],
+        //     'category' => ['string'],
+        //     'image' => 'string'
+        // ];
     }
 }

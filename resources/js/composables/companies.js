@@ -19,9 +19,14 @@ export default function useCompanies() {
     };
 
     const storeCompany = async (data) => {
+        // console.log(data);
+        let fd = new FormData();
+        fd.append("image", data.file);
+        fd.append("form", data.form);
+        console.log("hh: ", fd);
         errors.value = "";
         try {
-            await axios.post("/api/companies", data);
+            await axios.post("/api/companies", fd);
             await router.push({ name: "companies.index" });
         } catch (e) {
             if (e.response.status === 422) {
@@ -45,6 +50,9 @@ export default function useCompanies() {
     const destroyCompany = async (id) => {
         await axios.delete("/api/companies/" + id);
     };
+    function submitFile() {
+        // console.log("sumit is working");
+    }
 
     return {
         companies,
@@ -55,5 +63,6 @@ export default function useCompanies() {
         storeCompany,
         updateCompany,
         destroyCompany,
+        submitFile,
     };
 }
