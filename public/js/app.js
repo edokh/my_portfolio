@@ -21463,11 +21463,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                onUpload();
-                _context.next = 3;
+                _context.next = 2;
                 return storeCompany(_objectSpread({}, form));
 
-              case 3:
+              case 2:
               case "end":
                 return _context.stop();
             }
@@ -21485,8 +21484,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       form.image = event.target.files[0].name;
       console.log(form.image);
     }
-
-    function onUpload() {}
 
     return {
       form: form,
@@ -22873,36 +22870,35 @@ function useCompanies() {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              console.log(data);
               errors.value = "";
-              _context3.prev = 2;
-              _context3.next = 5;
+              _context3.prev = 1;
+              _context3.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/companies", data);
 
-            case 5:
-              _context3.next = 7;
+            case 4:
+              _context3.next = 6;
               return router.push({
                 name: "companies.index"
               });
 
-            case 7:
-              _context3.next = 12;
+            case 6:
+              _context3.next = 11;
               break;
 
-            case 9:
-              _context3.prev = 9;
-              _context3.t0 = _context3["catch"](2);
+            case 8:
+              _context3.prev = 8;
+              _context3.t0 = _context3["catch"](1);
 
               if (_context3.t0.response.status === 422) {
                 errors.value = _context3.t0.response.data.errors;
               }
 
-            case 12:
+            case 11:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[2, 9]]);
+      }, _callee3, null, [[1, 8]]);
     }));
 
     return function storeCompany(_x2) {

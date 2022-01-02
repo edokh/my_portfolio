@@ -19,7 +19,6 @@ export default function useCompanies() {
     };
 
     const storeCompany = async (data) => {
-        console.log(data);
         errors.value = "";
         try {
             await axios.post("/api/companies", data);

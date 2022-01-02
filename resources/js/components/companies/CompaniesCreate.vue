@@ -232,7 +232,6 @@ export default {
     const { errors, storeCompany } = useCompanies();
 
     const saveCompany = async () => {
-      onUpload();
       await storeCompany({ ...form });
     };
     function onFileSelected(event) {
@@ -240,7 +239,6 @@ export default {
       form.image = event.target.files[0].name;
       console.log(form.image);
     }
-    function onUpload() {}
 
     return {
       form,
