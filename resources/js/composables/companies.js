@@ -19,11 +19,15 @@ export default function useCompanies() {
     };
 
     const storeCompany = async (data) => {
-        // console.log(data);
+        console.log(data);
         let fd = new FormData();
         fd.append("image", data.file);
-        fd.append("form", data.form);
-        console.log("hh: ", fd);
+        fd.append("title", data.form.title);
+        fd.append("description", data.form.description);
+        fd.append("client", data.form.client);
+        fd.append("project_url", data.form.project_url);
+        fd.append("category", data.form.category);
+
         errors.value = "";
         try {
             await axios.post("/api/companies", fd);
@@ -35,10 +39,24 @@ export default function useCompanies() {
         }
     };
 
-    const updateCompany = async (id) => {
+    const updateCompany = async (id, data) => {
+        console.log(data);
+        let fd = new FormData();
+        fd.append("_method", "patch");
+        fd.append("new_image", data.file);
+        fd.append("image", data.form.image);
+        fd.append("title", data.form.title);
+        fd.append("description", data.form.description);
+        fd.append("client", data.form.client);
+        fd.append("project_url", data.form.project_url);
+        fd.append("category", data.form.category);
         errors.value = "";
         try {
-            await axios.put("/api/companies/" + id, company.value);
+            await axios.post("/api/companies/" + id, fd, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
             await router.push({ name: "companies.index" });
         } catch (e) {
             if (e.response.status === 422) {
@@ -50,9 +68,6 @@ export default function useCompanies() {
     const destroyCompany = async (id) => {
         await axios.delete("/api/companies/" + id);
     };
-    function submitFile() {
-        // console.log("sumit is working");
-    }
 
     return {
         companies,
@@ -63,6 +78,5 @@ export default function useCompanies() {
         storeCompany,
         updateCompany,
         destroyCompany,
-        submitFile,
     };
 }

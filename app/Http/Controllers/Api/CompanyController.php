@@ -26,17 +26,24 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyRequest $request)
     {
-        \Log::info("12345678\n");
-        \Log::info($request->all());
 
-        // $image = request()->file('image');
-        // $imageName = $image->getClientOriginalName();
-        // $imageName = time() . '_' . $imageName;
-        // $image->move(public_path('/images'), $imageName);
-        // $company = Company::create($request->form);
-        // return new CompanyResource($company);
+        $image = $request->image; //request()->file('image');
+        $imageName = $image->getClientOriginalName();
+        $imageName = time() . '_' . $imageName;
+        $image->move(public_path('/images'), $imageName);
+
+        $project = new Company();
+        $project->image = $imageName;
+        $project->title = $request->title;
+        $project->description = $request->description;
+        $project->client = $request->client;
+        $project->project_url = $request->project_url;
+        $project->category = $request->category;
+        $project->save();
+
+        return new CompanyResource($project);
     }
 
     /**
@@ -57,9 +64,29 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(CompanyRequest $request, Company $company)
+    public function update(Request $request, Company $company)
     {
-        $company->update($request->validated());
+
+        $path = public_path() . '/images/';
+
+        //code for remove old image
+        $file_old = $path . $request->image;
+        unlink($file_old);
+
+        //code for add new image
+        $image = $request->new_image;
+        $imageName = $image->getClientOriginalName();
+        $imageName = time() . '_' . $imageName;
+        $image->move(public_path('/images'), $imageName);
+
+        $company->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $imageName,
+            'client' => $request->client,
+            'project_url' => $request->project_url,
+            'category' => $request->category
+        ]);
 
         return new CompanyResource($company);
     }

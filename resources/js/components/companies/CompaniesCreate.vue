@@ -224,10 +224,9 @@ export default {
     let file = reactive(null);
     let imagePreview = ref(null);
 
-    const { errors, storeCompany, submitFile } = useCompanies();
+    const { errors, storeCompany } = useCompanies();
 
     const saveCompany = async () => {
-      submitFile();
       await storeCompany({ form: form, file });
     };
     function onFileSelected(event) {
