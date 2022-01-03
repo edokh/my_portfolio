@@ -7,7 +7,8 @@
       sm:rounded-md
     "
   >
-    <div class="flex place-content-end mb-4">
+    <div class="d-flex justify-content-between m-4">
+      <h2>All Projects</h2>
       <div
         class="
           px-4
@@ -16,11 +17,12 @@
           bg-indigo-600
           hover:bg-indigo-700
           cursor-pointer
+          rounded-md
         "
       >
         <router-link
           :to="{ name: 'companies.create' }"
-          class="text-sm font-medium"
+          class="text-sm font-medium text-decoration-none text-white"
           >Create project</router-link
         >
       </div>

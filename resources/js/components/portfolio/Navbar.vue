@@ -21,29 +21,17 @@
           >
         </li>
         <li class="nav-item">
-          <router-link
-            @click="setFucus('resume')"
-            class="nav-link"
-            :class="resume"
-            to="/resume"
+          <router-link class="nav-link" :class="resume" to="/resume"
             >Resume</router-link
           >
         </li>
         <li class="nav-item">
-          <router-link
-            @click="setFucus('portfolio')"
-            class="nav-link"
-            :class="portfolio"
-            to="/portfolio"
+          <router-link class="nav-link" :class="portfolio" to="/portfolio"
             >Portfolio</router-link
           >
         </li>
         <li class="nav-item">
-          <router-link
-            @click="setFucus('contact')"
-            class="nav-link"
-            :class="contact"
-            to="/contact"
+          <router-link class="nav-link" :class="contact" to="/contact"
             >Contact</router-link
           >
         </li>
