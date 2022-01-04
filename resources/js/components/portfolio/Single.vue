@@ -1,8 +1,7 @@
 <template>
   <!-- Page Content -->
   <div class="container bg-white shadow">
-    <!-- Portfolio Item Heading -->{{
-    }}
+    <!-- Portfolio Item Heading {{ pictures }}-->
     <div class="d-flex justify-content-between">
       <h1 class="py-2 text-center"></h1>
       <h1 class="py-2 text-center">
@@ -141,14 +140,13 @@
 export default {
   props: {
     project: { type: Object },
+    pictures: { type: Object },
   },
   emits: ["close"],
   setup(props, { emit }) {
     function closeSingle() {
-      console.log("clicked");
       emit("close");
     }
-    // const { onClickOutside, isSingleClose } = usePortfolio();
     return {
       closeSingle,
     };

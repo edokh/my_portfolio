@@ -153,14 +153,7 @@
             id="formFile"
           />
         </div>
-        <div v-if="imagePreview != null">
-          <!-- <img
-          :src="imagePreview"
-          alt=""
-          class="figure-img img-fluid rounded"
-          style="max-height: 100px"
-        /> -->
-        </div>
+        <div v-if="imagePreview != null"></div>
         <img
           v-if="company.image != undefined"
           :src="
@@ -217,7 +210,8 @@ export default {
   },
 
   setup(props) {
-    const { errors, company, getCompany, updateCompany } = useCompanies();
+    const { errors, company, pictures, getCompany, updateCompany } =
+      useCompanies();
 
     onMounted(getCompany(props.id));
 
@@ -243,6 +237,7 @@ export default {
 
     return {
       isImageChanged,
+      pictures,
       errors,
       file,
       company,

@@ -5,6 +5,7 @@ import { useRouter } from "vue-router";
 export default function useCompanies() {
     const companies = ref([]);
     const company = ref([]);
+    const pictures = ref([]);
     const router = useRouter();
     const errors = ref("");
 
@@ -15,11 +16,11 @@ export default function useCompanies() {
 
     const getCompany = async (id) => {
         let response = await axios.get("/api/companies/" + id);
-        company.value = response.data.data;
+        company.value = response.data.project;
+        pictures.value = response.data.pictures;
     };
 
     const storeCompany = async (data) => {
-        console.log(data);
         let fd = new FormData();
         fd.append("image", data.file);
         fd.append("title", data.form.title);
@@ -40,7 +41,6 @@ export default function useCompanies() {
     };
 
     const updateCompany = async (id, data) => {
-        console.log(data);
         let fd = new FormData();
         fd.append("_method", "patch");
         fd.append("new_image", data.file);
@@ -72,6 +72,7 @@ export default function useCompanies() {
     return {
         companies,
         company,
+        pictures,
         errors,
         getCompanies,
         getCompany,

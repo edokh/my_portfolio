@@ -1,5 +1,7 @@
 <template>
   <navbar />
+  {{ projectPictures }}{{ project }}
+  <!-- project is not getting with the first click -->
   <div
     v-if="!isSingleClose"
     style="height: 100% !important"
@@ -9,6 +11,7 @@
       v-click-outside="onClickOutside"
       class="opacity-100 rounded-md"
       :project="project"
+      :pictures="projectPictures"
       @close="onClickOutside"
     />
   </div>
@@ -23,7 +26,7 @@
             class="col-xl-3 col-lg-4 col-md-6 mb-4"
           >
             <div
-              @click="selectProject(project)"
+              @click="selectProject(project.id)"
               class="bg-white rounded shadow-sm cursor-pointer"
             >
               <img
@@ -89,17 +92,21 @@ import { onMounted, ref } from "vue";
 export default {
   components: { single, navbar },
   setup() {
-    const { companies, getCompanies, destroyCompany } = useCompanies();
+    const { companies, getCompanies, company, pictures, getCompany } =
+      useCompanies();
     const project = ref({});
+    const projectPictures = ref({});
     const isSingleClose = ref(true);
     onMounted(getCompanies);
-    function selectProject(selected) {
-      project.value = selected;
-      isSingleClose.value = false;
+    function selectProject(id) {
+      getCompany(id);
+      project.value = company.value;
+      projectPictures.value = pictures.value;
+      console.log(project.value);
+      // isSingleClose.value = false;
     }
     function onClickOutside(event) {
       isSingleClose.value = true;
-      console.log("Clicked outside. Event: ");
     }
     return {
       companies,
@@ -107,6 +114,7 @@ export default {
       selectProject,
       onClickOutside,
       isSingleClose,
+      projectPictures,
     };
   },
 };
