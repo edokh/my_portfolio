@@ -8,6 +8,7 @@ import About from "../components/portfolio/About";
 import Resume from "../components/portfolio/Resume";
 import Portfolio from "../components/portfolio/Portfolio";
 import Contact from "../components/portfolio/Contact";
+import Temp from "../components/portfolio/temp";
 
 const routes = [
     {
@@ -50,6 +51,11 @@ const routes = [
         path: "/contact",
         name: "contact",
         component: Contact,
+    },
+    {
+        path: "/test",
+        name: "test",
+        component: Temp,
     },
 ];
 

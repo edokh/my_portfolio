@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CompanyRequest;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
+use App\Models\Picture;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -54,7 +55,11 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        return new CompanyResource($company);
+
+        $pictures = Picture::where('project_id', $company->id)->get();
+        $project
+            = new CompanyResource($company);
+        return ["project" => $project, "pictures" => $pictures];
     }
 
     /**

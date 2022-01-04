@@ -15,8 +15,11 @@ class CreatePicturesTable extends Migration
     {
         Schema::create('pictures', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('project_id');
-            $table->string('picture');
+            $table->foreignId('project_id')
+                ->references('id')
+                ->on('companies')
+                ->onDelete('cascade');
+            $table->string('picture')->default('default.jpg');
             $table->timestamps();
         });
     }

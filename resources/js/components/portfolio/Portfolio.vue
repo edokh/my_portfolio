@@ -1,7 +1,16 @@
 <template>
   <navbar />
-  <div class="w-100 h-100 position-absolute">
-    <single class="opacity-100" />
+  <div
+    v-if="!isSingleClose"
+    style="height: 100% !important"
+    class="w-100 position-absolute mt-12"
+  >
+    <single
+      v-click-outside="onClickOutside"
+      class="opacity-100 rounded-md"
+      :project="project"
+      @close="onClickOutside"
+    />
   </div>
   <div class="w-100" v-if="companies != null">
     <div class="container-fluid mt-2">
@@ -13,7 +22,10 @@
             :key="project.id"
             class="col-xl-3 col-lg-4 col-md-6 mb-4"
           >
-            <div class="bg-white rounded shadow-sm">
+            <div
+              @click="selectProject(project)"
+              class="bg-white rounded shadow-sm cursor-pointer"
+            >
               <img
                 :src="'http://127.0.0.1:8000/images/' + project.image"
                 alt=""
@@ -72,16 +84,29 @@
 import single from "../portfolio/Single.vue";
 import navbar from "../portfolio/Navbar";
 import useCompanies from "../../composables/companies";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 export default {
   components: { single, navbar },
   setup() {
     const { companies, getCompanies, destroyCompany } = useCompanies();
+    const project = ref({});
+    const isSingleClose = ref(true);
     onMounted(getCompanies);
-
+    function selectProject(selected) {
+      project.value = selected;
+      isSingleClose.value = false;
+    }
+    function onClickOutside(event) {
+      isSingleClose.value = true;
+      console.log("Clicked outside. Event: ");
+    }
     return {
       companies,
+      project,
+      selectProject,
+      onClickOutside,
+      isSingleClose,
     };
   },
 };
