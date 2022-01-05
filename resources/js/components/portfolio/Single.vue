@@ -30,79 +30,16 @@
           src="'http://127.0.0.1:8000/images/' + project.image"
           alt=""
         /> -->
-        <div
-          id="carouselBasicExample"
-          class="carousel slide carousel-fade"
-          data-mdb-ride="carousel"
-        >
-          <!-- Indicators -->
-          <div class="carousel-indicators">
-            <button
-              type="button"
-              data-mdb-target="#carouselBasicExample"
-              data-mdb-slide-to="0"
-              class="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-mdb-target="#carouselBasicExample"
-              data-mdb-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-mdb-target="#carouselBasicExample"
-              data-mdb-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
-          </div>
 
-          <!-- Inner -->
-          <div class="carousel-inner">
-            <!-- Single item -->
-            <!-- <div
-              class="carousel-item"
-              v-for="(picture, index) in pictures"
-              :key="`item-${index}`"
-            >
-              <img
-                :src="'http://127.0.0.1:8000/images/' + picture.picture"
-                class="d-block w-100"
-                alt="Sunset Over the City"
-              />
-            </div> -->
-            <carousel
-              :interval="3000"
-              controls="true"
-              indicators="true"
-              :slides="pictures"
-            ></carousel>
-            <!-- Single item -->
-          </div>
-          <!-- Inner -->
+        <!-- Inner -->
 
-          <!-- Controls -->
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-mdb-target="#carouselBasicExample"
-            data-mdb-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-mdb-target="#carouselBasicExample"
-            data-mdb-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
+        <carousel
+          :interval="3000"
+          controls="true"
+          indicators="true"
+          :slides="pictures"
+        ></carousel>
+        <!-- Single item -->
       </div>
 
       <div class="col-md-4">

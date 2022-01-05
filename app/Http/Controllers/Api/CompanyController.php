@@ -46,16 +46,36 @@ class CompanyController extends Controller
         $project->project_url = $request->project_url;
         $project->category = $request->category;
         $project->save();
-        Log::info($project->id);
-        $projectPictures = [];
+        // Log::info($request);
+
+
+        // $projectPictures = [];
         if ($request->hasFile('files')) {
-            foreach ($request->file('files') as $key => $file) {
-                $file_name = time() . '_' . $file->getClientOriginalName();
+
+            foreach ($request->file('files') as $file) {
+
+                Log::info($file->getClientOriginalName());
+                $imageName = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('/images'), $imageName);
-                $projectPictures[] = ['project_id' => $project->id, 'picture' => $file_name, 'created_at' => Carbon::now()];
+
+                Picture::create([
+                    'project_id' => $project->id,
+                    'picture' => $imageName,
+                    'created_at' => Carbon::now()
+                ]);
+
+                // $file_name = time() . '_' . $file->getClientOriginalName();
+                // $file->move(public_path('/images'), $imageName);
+                // // $projectPictures[] = [
+                // //     'project_id' => $project->id,
+                // //     'picture' => $file_name,
+                // //     'created_at' => Carbon::now()
+                // // ];
             }
         }
-        // DB::table('item_pictures')->insert($itemPicture);
+        // DB::table('item_pictures')->insert($projectPictures);
+        // Picture::create($projectPictures);
+
 
         //multi uploads
         // $images = $request->images;

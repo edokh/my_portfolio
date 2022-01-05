@@ -1,10 +1,9 @@
 <template>
   <navbar />
-  <!-- project is not getting with the first click -->
   <div
     v-if="!isSingleClose"
     style="height: 100% !important"
-    class="w-100 position-absolute mt-12"
+    class="w-100 position-fixed"
   >
     <single
       v-click-outside="onClickOutside"
@@ -72,18 +71,13 @@
           </div>
           <!-- End -->
         </div>
-        <div class="py-5 text-right">
-          <a href="#" class="btn btn-dark px-5 py-3 text-uppercase"
-            >Show me more</a
-          >
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import single from "../portfolio/Single.vue";
+import single from "./Single";
 import navbar from "../portfolio/Navbar";
 import useCompanies from "../../composables/companies";
 import { onMounted, ref } from "vue";
@@ -118,4 +112,3 @@ export default {
   },
 };
 </script>
-

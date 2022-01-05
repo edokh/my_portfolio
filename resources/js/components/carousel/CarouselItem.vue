@@ -8,7 +8,7 @@
     >
       <img
         :src="'http://127.0.0.1:8000/images/' + slide"
-        class="d-block w-100"
+        class="d-block w-100 rounded"
         alt="Sunset Over the City"
       />
     </div>

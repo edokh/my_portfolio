@@ -1,6 +1,34 @@
 <template>
-  <button class="carousel-control left" @click="$emit('prev')">Prev</button>
-  <button class="carousel-control right" @click="$emit('next')">Next</button>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="carousel-control left"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    @click="$emit('prev')"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M15 19l-7-7 7-7"
+    />
+  </svg>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="carousel-control right"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    @click="$emit('next')"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M9 5l7 7-7 7"
+    />
+  </svg>
 </template>
 <script>
 export default {
@@ -14,7 +42,6 @@ export default {
 
 <style scoped>
 .carousel-control {
-  background-color: rgba(0, 0, 0, 0.5);
   border: none;
   display: inline-block;
   position: absolute;

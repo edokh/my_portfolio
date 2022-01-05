@@ -132,7 +132,7 @@ export default {
 .carousel-inner {
   position: relative;
   width: 900px;
-  height: 400px;
+  padding-bottom: 1rem;
   overflow: hidden;
 }
 </style> 
