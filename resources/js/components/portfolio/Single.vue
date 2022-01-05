@@ -62,31 +62,24 @@
           <!-- Inner -->
           <div class="carousel-inner">
             <!-- Single item -->
-            <div class="carousel-item active">
+            <!-- <div
+              class="carousel-item"
+              v-for="(picture, index) in pictures"
+              :key="`item-${index}`"
+            >
               <img
-                :src="'http://127.0.0.1:8000/images/' + project.image"
+                :src="'http://127.0.0.1:8000/images/' + picture.picture"
                 class="d-block w-100"
                 alt="Sunset Over the City"
               />
-            </div>
-
+            </div> -->
+            <carousel
+              :interval="3000"
+              controls="true"
+              indicators="true"
+              :slides="pictures"
+            ></carousel>
             <!-- Single item -->
-            <div class="carousel-item">
-              <img
-                :src="'http://127.0.0.1:8000/images/1641275969_TheCommonWanderer_-870x555-1-2048x2048.jpg'"
-                class="d-block w-100"
-                alt="Canyon at Nigh"
-              />
-            </div>
-
-            <!-- Single item -->
-            <div class="carousel-item">
-              <img
-                :src="'http://127.0.0.1:8000/images/1641282537_Screenshot_1.jpg'"
-                class="d-block w-100"
-                alt="Cliff Above a Stormy Sea"
-              />
-            </div>
           </div>
           <!-- Inner -->
 
@@ -136,12 +129,14 @@
 </template>
 <script>
 // import { defineComponent } from '@vue/composition-api'
+import Carousel from "../carousel/Carousel.vue";
 
 export default {
   props: {
     project: { type: Object },
     pictures: { type: Object },
   },
+  components: { Carousel },
   emits: ["close"],
   setup(props, { emit }) {
     function closeSingle() {

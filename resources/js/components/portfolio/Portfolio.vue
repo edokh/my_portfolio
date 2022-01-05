@@ -1,6 +1,5 @@
 <template>
   <navbar />
-  {{ projectPictures }}{{ project }}
   <!-- project is not getting with the first click -->
   <div
     v-if="!isSingleClose"
@@ -98,13 +97,13 @@ export default {
     const projectPictures = ref({});
     const isSingleClose = ref(true);
     onMounted(getCompanies);
-    function selectProject(id) {
-      getCompany(id);
+    const selectProject = async (id) => {
+      await getCompany(id);
       project.value = company.value;
       projectPictures.value = pictures.value;
       console.log(project.value);
-      // isSingleClose.value = false;
-    }
+      isSingleClose.value = false;
+    };
     function onClickOutside(event) {
       isSingleClose.value = true;
     }

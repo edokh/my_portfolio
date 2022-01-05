@@ -1,47 +1,58 @@
 <template>
   <navbar />
-  {{ images[0].picture_link }}
-  <img :src="'http://127.0.0.1:8000/images/' + images[0].picture_link" alt="" />
-  <div class="carousel-item" v-for="image in images" :key="image.id">
-    <img :src="'http://127.0.0.1:8000/images/' + image.picture_link" alt="" />
-  </div>
-  <div class="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item" v-for="image in images" :key="image.id">
-        <img :src="image.picture_link" alt="" />
-      </div>
-    </div>
+  <!-- <div v-for="picture in pictures" :key="picture.id">
+    {{ picture.picture }}
+  </div> -->
+  <div class="container">
+    <carousel
+      :interval="3000"
+      controls="true"
+      indicators="true"
+      :slides="pictures"
+    ></carousel>
   </div>
 </template>
 
 <script>
 import { ref } from "@vue/reactivity";
 import navbar from "../portfolio/Navbar";
+import Carousel from "../carousel/Carousel.vue";
 
 export default {
   components: {
     navbar,
+    Carousel,
   },
   setup() {
-    let numOfPics = ref(3);
-    let idOfPics = ref(0);
-    let images = ref();
-
     return {
-      numOfPics,
-      idOfPics,
-      images: [
+      pictures: [
         {
-          picture_link: "1641275933_img2-1200x900.jpg",
           id: 1,
+          project_id: 1,
+          picture: "1641299710_aegean-680x500-1-1024x1024.jpg",
+          created_at: null,
+          updated_at: null,
         },
         {
-          picture_link: "1641275954_tour-3@2x-400x300.png",
           id: 2,
+          project_id: 1,
+          picture: "default.jpg",
+          created_at: null,
+          updated_at: null,
         },
         {
-          picture_link: "1641275980_study_in_turkey-1200x900.png",
           id: 3,
+          project_id: 1,
+          picture: "1641299691_Adna-min.jpg",
+          created_at: null,
+          updated_at: null,
+        },
+        {
+          id: 4,
+          project_id: 1,
+          picture: "1641299710_aegean-680x500-1-1024x1024.jpg",
+          created_at: null,
+          updated_at: null,
         },
       ],
     };
