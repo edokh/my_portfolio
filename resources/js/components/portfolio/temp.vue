@@ -3,6 +3,7 @@
   <!-- <div v-for="picture in pictures" :key="picture.id">
     {{ picture.picture }}
   </div> -->
+  <UploadImages @changed="handleImages" />
   <div class="container">
     <carousel
       :interval="3000"
@@ -17,14 +18,20 @@
 import { ref } from "@vue/reactivity";
 import navbar from "../portfolio/Navbar";
 import Carousel from "../carousel/Carousel.vue";
+import UploadImages from "vue-upload-drop-images";
 
 export default {
   components: {
     navbar,
     Carousel,
+    UploadImages,
   },
   setup() {
+    const handleImages = (files) => {
+      console.log(files);
+    };
     return {
+      handleImages,
       pictures: [
         {
           id: 1,

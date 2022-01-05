@@ -28,7 +28,7 @@
       enctype="multipart/form-data"
       @submit.prevent="saveCompany"
     >
-      <div class="space-y-4 rounded-md shadow-sm">
+      <div class="space-y-4 rounded-md">
         <div>
           <label for="title" class="block text-sm font-medium text-gray-700"
             >Title</label
@@ -163,6 +163,16 @@
             style="max-height: 100px"
           />
         </div>
+        <div>
+          <label
+            for="project_url"
+            class="block text-sm font-medium text-gray-700"
+            >Project Gallery</label
+          >
+          <div class="mt-1">
+            <UploadImages @changed="handleImages" />
+          </div>
+        </div>
       </div>
 
       <button
@@ -199,8 +209,12 @@
 <script>
 import { reactive, ref } from "vue";
 import useCompanies from "../../composables/companies";
+import UploadImages from "vue-upload-drop-images";
 
 export default {
+  components: {
+    UploadImages,
+  },
   setup() {
     const form = reactive({
       title: "",
@@ -213,7 +227,7 @@ export default {
     let file = reactive(null);
     let imagePreview = ref(null);
 
-    const { errors, storeCompany } = useCompanies();
+    const { errors, storeCompany, addGallery } = useCompanies();
 
     const saveCompany = async () => {
       await storeCompany({ form: form, file });
@@ -227,6 +241,9 @@ export default {
         imagePreview.value = event.target.result;
       };
     }
+    const handleImages = (files) => {
+      addGallery(files);
+    };
 
     return {
       form,
@@ -235,6 +252,7 @@ export default {
       onFileSelected,
       imagePreview,
       file,
+      handleImages,
     };
   },
 };

@@ -7,7 +7,9 @@ use App\Http\Requests\CompanyRequest;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
 use App\Models\Picture;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CompanyController extends Controller
 {
@@ -30,6 +32,7 @@ class CompanyController extends Controller
     public function store(CompanyRequest $request)
     {
 
+
         $image = $request->image; //request()->file('image');
         $imageName = $image->getClientOriginalName();
         $imageName = time() . '_' . $imageName;
@@ -43,6 +46,31 @@ class CompanyController extends Controller
         $project->project_url = $request->project_url;
         $project->category = $request->category;
         $project->save();
+        Log::info($project->id);
+        $projectPictures = [];
+        if ($request->hasFile('files')) {
+            foreach ($request->file('files') as $key => $file) {
+                $file_name = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('/images'), $imageName);
+                $projectPictures[] = ['project_id' => $project->id, 'picture' => $file_name, 'created_at' => Carbon::now()];
+            }
+        }
+        // DB::table('item_pictures')->insert($itemPicture);
+
+        //multi uploads
+        // $images = $request->images;
+        // foreach ($images as $image) {
+        //     //$image = $request->image;
+        //     $imageName = $image->getClientOriginalName();
+        //     $imageName = time() . '_' . $imageName;
+        //     $image->move(public_path('/images'), $imageName);
+
+        //     Picture::create([
+        //         'project_id' => $image->project_id,
+        //         'picture' => $image->picture
+        //     ]);
+        // }
+
 
         return new CompanyResource($project);
     }

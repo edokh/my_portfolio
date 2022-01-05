@@ -27,7 +27,13 @@ class PictureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //for uploading project pictures
+
+        $image = $request->images; //images should contain all pictures of dedicated project
+        $imageName = $image->getClientOriginalName();
+        $imageName = time() . '_' . $imageName;
+
+        $request->file->move(public_path('images'), $imageName);
     }
 
     /**

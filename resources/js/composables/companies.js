@@ -19,9 +19,8 @@ export default function useCompanies() {
         company.value = response.data.project;
         pictures.value = response.data.pictures;
     };
-
+    let fd = new FormData();
     const storeCompany = async (data) => {
-        let fd = new FormData();
         fd.append("image", data.file);
         fd.append("title", data.form.title);
         fd.append("description", data.form.description);
@@ -37,6 +36,13 @@ export default function useCompanies() {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
             }
+        }
+    };
+    const addGallery = async (files) => {
+        for (var i = 0; i < files.length; i++) {
+            let file = files[i];
+            fd.append("files[" + i + "]", file);
+            console.log("i: " + i);
         }
     };
 
@@ -79,5 +85,6 @@ export default function useCompanies() {
         storeCompany,
         updateCompany,
         destroyCompany,
+        addGallery,
     };
 }
