@@ -46,10 +46,7 @@ class CompanyController extends Controller
         $project->project_url = $request->project_url;
         $project->category = $request->category;
         $project->save();
-        // Log::info($request);
 
-
-        // $projectPictures = [];
         if ($request->hasFile('files')) {
 
             foreach ($request->file('files') as $file) {
@@ -63,34 +60,8 @@ class CompanyController extends Controller
                     'picture' => $imageName,
                     'created_at' => Carbon::now()
                 ]);
-
-                // $file_name = time() . '_' . $file->getClientOriginalName();
-                // $file->move(public_path('/images'), $imageName);
-                // // $projectPictures[] = [
-                // //     'project_id' => $project->id,
-                // //     'picture' => $file_name,
-                // //     'created_at' => Carbon::now()
-                // // ];
             }
         }
-        // DB::table('item_pictures')->insert($projectPictures);
-        // Picture::create($projectPictures);
-
-
-        //multi uploads
-        // $images = $request->images;
-        // foreach ($images as $image) {
-        //     //$image = $request->image;
-        //     $imageName = $image->getClientOriginalName();
-        //     $imageName = time() . '_' . $imageName;
-        //     $image->move(public_path('/images'), $imageName);
-
-        //     Picture::create([
-        //         'project_id' => $image->project_id,
-        //         'picture' => $image->picture
-        //     ]);
-        // }
-
 
         return new CompanyResource($project);
     }

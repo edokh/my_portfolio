@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CompanyController;
+use App\Http\Controllers\Api\ContactController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('companies', \App\Http\Controllers\Api\CompanyController::class);
-Route::apiResource('pictures', \App\Http\Controllers\Api\PictureController::class);
+Route::post('/send-message', [ContactController::class, 'send']);
