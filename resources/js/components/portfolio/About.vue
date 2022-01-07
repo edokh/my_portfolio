@@ -18,18 +18,13 @@
       <div class="row">
         <div class="col-lg-4">
           <img
-            src="https://scontent.febl5-1.fna.fbcdn.net/v/t39.30808-6/242165530_3100918033463312_7447423320901066102_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeHlBhTpWTBtNxFucLP1CvwkkU5XQjXdwP6RTldCNd3A_g4H1BGQoRPi6ZDyqq_PYJq0v8Ln18Il3rfkkdv014j0&_nc_ohc=O0DFj2YwaVcAX_CKJmB&tn=fPlqDPYsIwY0LbYm&_nc_ht=scontent.febl5-1.fna&oh=00_AT9gnMfd1DWaeIgbr3N_rWhc9rtTQPPOspEV7bj27w324Q&oe=61D6B052"
+            src="http://127.0.0.1:8000/images/about.jpg"
             class="img-fluid"
             alt=""
           />
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content">
           <h3>Software Developer</h3>
-          <!-- <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore
-              magna aliqua.
-            </p> -->
           <div class="row">
             <div class="col-lg-6">
               <ul class="pl-0">

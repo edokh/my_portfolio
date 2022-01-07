@@ -10,6 +10,7 @@
       aria-controls="navbarNav"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      @click="showNavbar"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -52,18 +53,22 @@ export default {
     function goHome() {
       router.push("/");
     }
-    return { goHome };
+    function showNavbar() {
+      if (document.getElementById("navbarNav").style.display == "none")
+        document.getElementById("navbarNav").style.display = "block";
+      else document.getElementById("navbarNav").style.display = "none";
+    }
+    return { goHome, showNavbar };
   },
 };
 </script>
 
 <style>
-/* .nav-link:hover {
-  color: #34b7a7 !important;
+nav {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
 }
-.nav-link:focus {
-  color: #34b7a7 !important;
-} */
 
 #app {
   background: white;

@@ -5,8 +5,7 @@
     id="hero"
     class="d-flex align-items-center py"
     style="
-      background: url(https://scontent.febl5-2.fna.fbcdn.net/v/t39.30808-6/271206106_3181470478741400_5607593860324761869_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=e3f864&_nc_eui2=AeEyvl6T6O_pnUv3ldqMTgfck3hgqHwIKJ-TeGCofAgonwfpKnOUb5devnw4U36-nQ8ytCnvTPg8q3mtcWgX4S87&_nc_ohc=pawiRC1e-KkAX8i5S-f&_nc_ht=scontent.febl5-2.fna&oh=00_AT92OWUgkbAOGrfD3oq2gb0qp8XKVjcGE5zeG6JD3fx9wQ&oe=61D82A51)
-        top right;
+      background: url(http://127.0.0.1:8000/images/home_bg.jpg) top right;
       background-repeat: no-repeat;
       background-size: cover;
     "

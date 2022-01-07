@@ -61,5 +61,6 @@ const routes = [
 
 export default createRouter({
     history: createWebHistory(),
+    mode: "history",
     routes,
 });
