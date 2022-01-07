@@ -15,7 +15,6 @@ class PictureController extends Controller
      */
     public function index()
     {
-        // return CompanyResource::collection(Company::all());
         return Picture::all();
     }
 

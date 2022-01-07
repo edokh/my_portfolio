@@ -26,7 +26,7 @@
       method="POST"
       class="space-y-6"
       enctype="multipart/form-data"
-      @submit.prevent="saveCompany"
+      @submit.prevent="saveProject"
     >
       <div class="space-y-4 rounded-md">
         <div>
@@ -208,7 +208,7 @@
 
 <script>
 import { reactive, ref } from "vue";
-import useCompanies from "../../composables/companies";
+import useProjects from "../../composables/projects";
 import UploadImages from "vue-upload-drop-images";
 
 export default {
@@ -227,10 +227,10 @@ export default {
     let file = reactive(null);
     let imagePreview = ref(null);
 
-    const { errors, storeCompany, addGallery } = useCompanies();
+    const { errors, storeProject, addGallery } = useProjects();
 
-    const saveCompany = async () => {
-      await storeCompany({ form: form, file });
+    const saveProject = async () => {
+      await storeProject({ form: form, file });
     };
     function onFileSelected(event) {
       file = event.target.files[0];
@@ -248,7 +248,7 @@ export default {
     return {
       form,
       errors,
-      saveCompany,
+      saveProject,
       onFileSelected,
       imagePreview,
       file,

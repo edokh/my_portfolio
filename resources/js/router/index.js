@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import CompaniesIndex from "../components/companies/CompaniesIndex";
-import CompaniesCreate from "../components/companies/CompaniesCreate";
-import CompaniesEdit from "../components/companies/CompaniesEdit";
+import ProjectsIndex from "../components/projects/ProjectsIndex";
+import ProjectsCreate from "../components/projects/ProjectsCreate";
+import ProjectsEdit from "../components/projects/ProjectsEdit";
 import Index from "../components/portfolio/Index";
 import About from "../components/portfolio/About";
 import Resume from "../components/portfolio/Resume";
@@ -13,18 +13,18 @@ import Temp from "../components/portfolio/temp";
 const routes = [
     {
         path: "/dashboard",
-        name: "companies.index",
-        component: CompaniesIndex,
+        name: "projects.index",
+        component: ProjectsIndex,
     },
     {
-        path: "/companies/create",
-        name: "companies.create",
-        component: CompaniesCreate,
+        path: "/projects/create",
+        name: "projects.create",
+        component: ProjectsCreate,
     },
     {
-        path: "/companies/:id/edit",
-        name: "companies.edit",
-        component: CompaniesEdit,
+        path: "/projects/:id/edit",
+        name: "projects.edit",
+        component: ProjectsEdit,
         props: true,
     },
     {
@@ -51,11 +51,6 @@ const routes = [
         path: "/contact",
         name: "contact",
         component: Contact,
-    },
-    {
-        path: "/test",
-        name: "test",
-        component: Temp,
     },
 ];
 

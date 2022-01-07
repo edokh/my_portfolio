@@ -26,7 +26,7 @@
     <form
       class="space-y-6"
       enctype="multipart/form-data"
-      @submit.prevent="saveCompany"
+      @submit.prevent="saveProject"
     >
       <div class="space-y-4 rounded-md shadow-sm">
         <div>
@@ -50,7 +50,7 @@
                 focus:ring-indigo-200
                 focus:ring-opacity-50
               "
-              v-model="company.title"
+              v-model="project.title"
             />
           </div>
         </div>
@@ -61,7 +61,7 @@
             id="description"
             name="description"
             rows="3"
-            v-model="company.description"
+            v-model="project.description"
           ></textarea>
         </div>
         <div>
@@ -85,7 +85,7 @@
                 focus:ring-indigo-200
                 focus:ring-opacity-50
               "
-              v-model="company.client"
+              v-model="project.client"
             />
           </div>
         </div>
@@ -112,7 +112,7 @@
                 focus:ring-indigo-200
                 focus:ring-opacity-50
               "
-              v-model="company.project_url"
+              v-model="project.project_url"
             />
           </div>
         </div>
@@ -137,7 +137,7 @@
                 focus:ring-indigo-200
                 focus:ring-opacity-50
               "
-              v-model="company.category"
+              v-model="project.category"
             >
               <option value="mobile">Mobile</option>
               <option value="web">Web</option>
@@ -155,11 +155,11 @@
         </div>
         <div v-if="imagePreview != null"></div>
         <img
-          v-if="company.image != undefined"
+          v-if="project.image != undefined"
           :src="
             isImageChanged
               ? imagePreview
-              : 'http://127.0.0.1:8000/images/' + company.image
+              : 'http://127.0.0.1:8000/images/' + project.image
           "
           alt=""
           style="height: 200px"
@@ -198,7 +198,7 @@
 </template>
 
 <script>
-import useCompanies from "../../composables/companies";
+import useProjects from "../../composables/projects";
 import { onMounted, reactive, ref } from "vue";
 
 export default {
@@ -210,13 +210,13 @@ export default {
   },
 
   setup(props) {
-    const { errors, company, pictures, getCompany, updateCompany } =
-      useCompanies();
+    const { errors, project, pictures, getProject, updateProject } =
+      useProjects();
 
-    onMounted(getCompany(props.id));
+    onMounted(getProject(props.id));
 
-    const saveCompany = async () => {
-      await updateCompany(props.id, { form: company.value, file });
+    const saveProject = async () => {
+      await updateProject(props.id, { form: project.value, file });
     };
 
     let file = reactive(null);
@@ -224,7 +224,7 @@ export default {
     let isImageChanged = ref(false);
 
     function onFileSelected(event) {
-      //   company.value.old_image = company.value.image;
+      //   project.value.old_image = project.value.image;
       file = event.target.files[0];
 
       let reader = new FileReader();
@@ -240,10 +240,10 @@ export default {
       pictures,
       errors,
       file,
-      company,
+      project,
       onFileSelected,
       imagePreview,
-      saveCompany,
+      saveProject,
     };
   },
 };

@@ -17,7 +17,7 @@ class Picture extends Model
         'picture'
     ];
 
-    public function company()
+    public function project()
     {
         return $this->belongsTo(Picture::class);
     }

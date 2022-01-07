@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CompanyRequest;
-use App\Http\Resources\CompanyResource;
-use App\Models\Company;
+use App\Http\Requests\ProjectRequest;
+use App\Http\Resources\ProjectResource;
+use App\Models\Project;
 use App\Models\Picture;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class CompanyController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return CompanyResource::collection(Company::all());
+        return ProjectResource::collection(Project::all());
     }
 
     /**
@@ -29,7 +29,7 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CompanyRequest $request)
+    public function store(ProjectRequest $request)
     {
 
 
@@ -38,7 +38,7 @@ class CompanyController extends Controller
         $imageName = time() . '_' . $imageName;
         $image->move(public_path('/images'), $imageName);
 
-        $project = new Company();
+        $project = new Project();
         $project->image = $imageName;
         $project->title = $request->title;
         $project->description = $request->description;
@@ -63,21 +63,21 @@ class CompanyController extends Controller
             }
         }
 
-        return new CompanyResource($project);
+        return new ProjectResource($project);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Company  $company
+     * @param  \App\Models\Project  $Project
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
+    public function show(Project $Project)
     {
 
-        $pictures = Picture::where('project_id', $company->id)->get();
+        $pictures = Picture::where('project_id', $Project->id)->get();
         $project
-            = new CompanyResource($company);
+            = new ProjectResource($Project);
         return ["project" => $project, "pictures" => $pictures];
     }
 
@@ -85,10 +85,10 @@ class CompanyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Company  $company
+     * @param  \App\Models\Project  $Project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request, Project $Project)
     {
 
         $path = public_path() . '/images/';
@@ -103,7 +103,7 @@ class CompanyController extends Controller
         $imageName = time() . '_' . $imageName;
         $image->move(public_path('/images'), $imageName);
 
-        $company->update([
+        $Project->update([
             'title' => $request->title,
             'description' => $request->description,
             'image' => $imageName,
@@ -112,18 +112,18 @@ class CompanyController extends Controller
             'category' => $request->category
         ]);
 
-        return new CompanyResource($company);
+        return new ProjectResource($Project);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Company  $company
+     * @param  \App\Models\Project  $Project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
+    public function destroy(Project $project)
     {
-        $company->delete();
+        $project->delete();
 
         return response()->noContent();
     }

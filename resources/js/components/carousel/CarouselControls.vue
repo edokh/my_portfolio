@@ -48,7 +48,7 @@ export default {
   height: 50px;
   width: 70px;
   top: calc(50% - 25px);
-  color: #f3f3f3;
+  color: #eef5db;
   cursor: pointer;
 }
 .left {

@@ -2,25 +2,25 @@ import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
 
-export default function useCompanies() {
-    const companies = ref([]);
-    const company = ref([]);
+export default function useProjects() {
+    const projects = ref([]);
+    const project = ref([]);
     const pictures = ref([]);
     const router = useRouter();
     const errors = ref("");
 
-    const getCompanies = async () => {
-        let response = await axios.get("/api/companies");
-        companies.value = response.data.data;
+    const getProjects = async () => {
+        let response = await axios.get("/api/projects");
+        projects.value = response.data.data;
     };
 
-    const getCompany = async (id) => {
-        let response = await axios.get("/api/companies/" + id);
-        company.value = response.data.project;
+    const getProject = async (id) => {
+        let response = await axios.get("/api/projects/" + id);
+        project.value = response.data.project;
         pictures.value = response.data.pictures;
     };
     let fd = new FormData();
-    const storeCompany = async (data) => {
+    const storeProject = async (data) => {
         fd.append("image", data.file);
         fd.append("title", data.form.title);
         fd.append("description", data.form.description);
@@ -30,8 +30,8 @@ export default function useCompanies() {
 
         errors.value = "";
         try {
-            await axios.post("/api/companies", fd);
-            await router.push({ name: "companies.index" });
+            await axios.post("/api/projects", fd);
+            await router.push({ name: "projects.index" });
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
@@ -46,7 +46,7 @@ export default function useCompanies() {
         }
     };
 
-    const updateCompany = async (id, data) => {
+    const updateProject = async (id, data) => {
         let fd = new FormData();
         fd.append("_method", "patch");
         fd.append("new_image", data.file);
@@ -58,12 +58,12 @@ export default function useCompanies() {
         fd.append("category", data.form.category);
         errors.value = "";
         try {
-            await axios.post("/api/companies/" + id, fd, {
+            await axios.post("/api/projects/" + id, fd, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             });
-            await router.push({ name: "companies.index" });
+            await router.push({ name: "projects.index" });
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
@@ -71,20 +71,20 @@ export default function useCompanies() {
         }
     };
 
-    const destroyCompany = async (id) => {
-        await axios.delete("/api/companies/" + id);
+    const destroyProject = async (id) => {
+        await axios.delete("/api/projects/" + id);
     };
 
     return {
-        companies,
-        company,
+        projects,
+        project,
         pictures,
         errors,
-        getCompanies,
-        getCompany,
-        storeCompany,
-        updateCompany,
-        destroyCompany,
+        getProjects,
+        getProject,
+        storeProject,
+        updateProject,
+        destroyProject,
         addGallery,
     };
 }

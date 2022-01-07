@@ -123,8 +123,8 @@ export default {
 </script>
 <style>
 #get-pdf {
-  background-color: #34b7a7;
-  color: white;
+  background-color: #77b6ea;
+  color: #eef5db;
   padding: 10px 70px 10px 73px;
   margin-top: 15px;
   border-radius: 15px;
@@ -141,7 +141,7 @@ export default {
 .resume .resume-item {
   padding: 0 0 20px 20px;
   margin-top: -2px;
-  border-left: 2px solid #34b7a7;
+  border-left: 2px solid #77b6ea;
   position: relative;
 }
 .resume .resume-item h4 {
@@ -149,17 +149,17 @@ export default {
   font-size: 18px;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
-  color: #1d685f;
+  color: #77b6ea;
   margin-bottom: 10px;
 }
 .resume .resume-item h5 {
   font-size: 16px;
-  background: #effbf9;
+  background: #eef5db;
   padding: 5px 15px;
   display: inline-block;
   font-weight: 600;
   margin-bottom: 10px;
-  color: #34b7a7;
+  color: #77b6ea;
 }
 .resume .resume-item ul {
   padding-left: 20px;
@@ -178,8 +178,8 @@ export default {
   border-radius: 50px;
   left: -9px;
   top: 0;
-  background: #fff;
-  border: 2px solid #34b7a7;
+  background: #eef5db;
+  border: 2px solid #77b6ea;
 }
 </style>
 

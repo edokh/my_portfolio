@@ -25,7 +25,6 @@ export default {
   position: absolute;
   transform: translate(-50%);
   left: 50%;
-  /* background: #999; */
   bottom: 1.5em;
   z-index: 2;
 }
@@ -33,7 +32,7 @@ export default {
   width: 15px;
   height: 15px;
   border: none;
-  background: #fff;
+  background: #eef5db;
   opacity: 0.5;
   margin: 0.2em;
   border-radius: 50%;

@@ -17,7 +17,7 @@ class CreatePicturesTable extends Migration
             $table->id();
             $table->foreignId('project_id')
                 ->references('id')
-                ->on('companies')
+                ->on('projects')
                 ->onDelete('cascade');
             $table->string('picture')->default('default.jpg');
             $table->timestamps();

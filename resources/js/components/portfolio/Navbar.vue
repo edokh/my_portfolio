@@ -1,6 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <!-- <router-link class="navbar-brand" to="/"></router-link> -->
+  <nav class="navbar navbar-expand-lg">
     <b class="text-lg cursor-pointer ml-2" @click="goHome">EDO</b>
     <button
       class="navbar-toggler"
@@ -36,11 +35,6 @@
             >Contact</router-link
           >
         </li>
-        <li class="nav-item">
-          <router-link class="nav-link" :class="contact" to="/test"
-            >Test</router-link
-          >
-        </li>
       </ul>
     </div>
   </nav>
@@ -68,23 +62,29 @@ nav {
   position: absolute;
   z-index: 2;
   width: 100%;
+  background-color: #200116;
+  color: #eef5db;
+}
+.nav-link {
+  color: #eef5db !important;
 }
 
 #app {
-  background: white;
+  background: #eef5db;
 }
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  background-color: #fdffff !important;
 }
 
 router-link:hover {
-  color: #51cdbe;
+  color: #77b6ea;
   text-decoration: none;
 }
 .router-link-active {
-  color: #51cdbe !important;
-  border-bottom: 3px solid #51cdbe !important;
+  color: #77b6ea !important;
+  border-bottom: 3px solid #77b6ea !important;
   font-weight: bold !important;
   padding-bottom: 2px !important;
 }
@@ -105,23 +105,6 @@ h6 {
     margin-top: 30px;
   }
 }
-/*--------------------------------------------------------------
-# Header Social Links
---------------------------------------------------------------*/
-.header-social-links {
-  padding-right: 15px;
-}
-.header-social-links a {
-  color: #6f6f6f;
-  padding-left: 6px;
-  display: inline-block;
-  line-height: 0px;
-  transition: 0.3s;
-  font-size: 16px;
-}
-.header-social-links a:hover {
-  color: #34b7a7;
-}
 
 .about .content h3 {
   font-weight: 700;
@@ -129,8 +112,6 @@ h6 {
   color: #555555;
 }
 
-element.style {
-}
 b,
 strong {
   font-weight: bolder;
@@ -162,7 +143,7 @@ section {
   display: block;
   width: 50px;
   height: 3px;
-  background: #34b7a7;
+  background: #77b6ea;
   bottom: 0;
   left: calc(50% - 25px);
 }

@@ -18,7 +18,7 @@
       <h1
         class="text-info"
         style="
-          color: #8181dd;
+          color: #77b6ea;
           text-shadow: 2px 1px 15px #8d8989;
           font-size: 48px;
           font-weight: 700;
@@ -27,7 +27,7 @@
       >
         Edo Khudeeda
       </h1>
-      <h2 style="color: white; text-shadow: 2px 1px 15px #000000">
+      <h2 style="color: #eef5db; text-shadow: 2px 1px 15px #000000">
         I'm a professional software developer from Erbil
       </h2>
       <router-link class="nav-link btn btn-info" :class="about" to="/about"

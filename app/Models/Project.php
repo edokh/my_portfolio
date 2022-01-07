@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class Project extends Model
 {
     use HasFactory;
-    protected $table = 'companies';
+    protected $table = 'projects';
     protected $primaryKey = 'id';
 
     protected $fillable = ['title', 'description', 'image', 'category', 'client', 'project_url'];

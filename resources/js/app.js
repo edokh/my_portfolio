@@ -4,7 +4,7 @@ require("alpinejs");
 
 import { createApp } from "vue";
 import router from "./router";
-import CompaniesIndex from "./components/companies/CompaniesIndex";
+import ProjectsIndex from "./components/projects/ProjectsIndex";
 import Navbar from "./components/portfolio/Navbar";
 import BootstrapVue from "bootstrap-vue";
 
@@ -13,7 +13,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import vClickOutside from "click-outside-vue3";
 
 createApp({
-    components: { Navbar, CompaniesIndex },
+    components: { Navbar, ProjectsIndex },
 })
     // .use(BootstrapVue)
     .use(router)

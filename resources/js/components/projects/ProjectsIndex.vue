@@ -21,7 +21,7 @@
         "
       >
         <router-link
-          :to="{ name: 'companies.create' }"
+          :to="{ name: 'projects.create' }"
           class="text-sm font-medium text-decoration-none text-white"
           >Create project</router-link
         >
@@ -89,7 +89,7 @@
       </thead>
 
       <tbody class="bg-white divide-y divide-gray-200 divide-solid">
-        <template v-for="item in companies" :key="item.id">
+        <template v-for="item in projects" :key="item.id">
           <tr class="bg-white">
             <td
               class="
@@ -138,7 +138,7 @@
               "
             >
               <router-link
-                :to="{ name: 'companies.edit', params: { id: item.id } }"
+                :to="{ name: 'projects.edit', params: { id: item.id } }"
                 class="
                   mr-2
                   inline-flex
@@ -165,7 +165,7 @@
                 Edit
               </router-link>
               <button
-                @click="deleteCompany(item.id)"
+                @click="deleteProject(item.id)"
                 class="
                   inline-flex
                   items-center
@@ -199,27 +199,27 @@
 </template>
 
 <script>
-import useCompanies from "../../composables/companies";
+import useProjects from "../../composables/projects";
 import { onMounted } from "vue";
 
 export default {
   setup() {
-    const { companies, getCompanies, destroyCompany } = useCompanies();
+    const { projects, getProjects, destroyProject } = useProjects();
 
-    onMounted(getCompanies);
+    onMounted(getProjects);
 
-    const deleteCompany = async (id) => {
+    const deleteProject = async (id) => {
       if (!window.confirm("Are you sure?")) {
         return;
       }
 
-      await destroyCompany(id);
-      await getCompanies();
+      await destroyProject(id);
+      await getProjects();
     };
 
     return {
-      companies,
-      deleteCompany,
+      projects,
+      deleteProject,
     };
   },
 };

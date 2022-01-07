@@ -232,7 +232,7 @@
 </template>
 
 <script>
-// import useCompanies from "../../composables/companies";
+// import useProjects from "../../composables/projects";
 // import { onMounted } from "vue";
 import navbar from "../portfolio/Navbar";
 

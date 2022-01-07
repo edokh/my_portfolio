@@ -8,18 +8,18 @@
     <single
       v-click-outside="onClickOutside"
       class="opacity-100 rounded-md"
-      :project="project"
+      :project="singleProject"
       :pictures="projectPictures"
       @close="onClickOutside"
     />
   </div>
-  <div class="w-100" v-if="companies != null">
+  <div class="w-100" v-if="projects != null">
     <div class="container-fluid mt-2">
       <div class="px-lg-5">
         <div class="row">
           <!-- Gallery item -->
           <div
-            v-for="project in companies"
+            v-for="project in projects"
             :key="project.id"
             class="col-xl-3 col-lg-4 col-md-6 mb-4"
           >
@@ -79,31 +79,30 @@
 <script>
 import single from "./Single";
 import navbar from "../portfolio/Navbar";
-import useCompanies from "../../composables/companies";
+import useProjects from "../../composables/projects";
 import { onMounted, ref } from "vue";
 
 export default {
   components: { single, navbar },
   setup() {
-    const { companies, getCompanies, company, pictures, getCompany } =
-      useCompanies();
-    const project = ref({});
+    const { projects, getProjects, project, pictures, getProject } =
+      useProjects();
+    const singleProject = ref({});
     const projectPictures = ref({});
     const isSingleClose = ref(true);
-    onMounted(getCompanies);
+    onMounted(getProjects);
     const selectProject = async (id) => {
-      await getCompany(id);
-      project.value = company.value;
+      await getProject(id);
+      singleProject.value = project.value;
       projectPictures.value = pictures.value;
-      console.log(project.value);
       isSingleClose.value = false;
     };
     function onClickOutside(event) {
       isSingleClose.value = true;
     }
     return {
-      companies,
-      project,
+      projects,
+      singleProject,
       selectProject,
       onClickOutside,
       isSingleClose,
