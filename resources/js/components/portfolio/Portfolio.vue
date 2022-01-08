@@ -10,6 +10,7 @@
       class="opacity-100 rounded-md"
       :project="singleProject"
       :pictures="projectPictures"
+      :techniques="projectTechniques"
       @close="onClickOutside"
     />
   </div>
@@ -85,16 +86,18 @@ import { onMounted, ref } from "vue";
 export default {
   components: { single, navbar },
   setup() {
-    const { projects, getProjects, project, pictures, getProject } =
+    const { projects, getProjects, project, pictures, getProject, techniques } =
       useProjects();
     const singleProject = ref({});
     const projectPictures = ref({});
+    const projectTechniques = ref({});
     const isSingleClose = ref(true);
     onMounted(getProjects);
     const selectProject = async (id) => {
       await getProject(id);
       singleProject.value = project.value;
       projectPictures.value = pictures.value;
+      projectTechniques.value = techniques.value;
       isSingleClose.value = false;
     };
     function onClickOutside(event) {
@@ -107,6 +110,7 @@ export default {
       onClickOutside,
       isSingleClose,
       projectPictures,
+      projectTechniques,
     };
   },
 };

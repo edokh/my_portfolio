@@ -28,7 +28,7 @@
       enctype="multipart/form-data"
       @submit.prevent="saveProject"
     >
-      <div class="space-y-4 rounded-md shadow-sm">
+      <div class="space-y-4 rounded-md">
         <div>
           <label for="title" class="block text-sm font-medium text-gray-700"
             >Title</label
@@ -145,7 +145,7 @@
           </div>
         </div>
         <div class="mb-3">
-          <label for="formFile" class="form-label">Image</label>
+          <label for="formFile" class="form-label">Preview Image</label>
           <input
             @change="onFileSelected"
             class="form-control"
@@ -164,6 +164,65 @@
           alt=""
           style="height: 200px"
         />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Techniques</label>
+        <div class="form-control h-48">
+          <div class="d-flex">
+            <input
+              @keyup.enter="addTechnique"
+              type="text"
+              class="
+                block
+                mt-1
+                w-full
+                rounded-md
+                border-gray-300
+                shadow-sm
+                focus:border-indigo-300
+                focus:ring
+                focus:ring-indigo-200
+                focus:ring-opacity-50
+              "
+              v-model="technique"
+            /><button
+              style="background: #77b6ea; color: #fff"
+              type="button"
+              class="rounded-md shadow-sm px-2 mx-1 mt-1"
+              @click="addTechnique"
+            >
+              Add
+            </button>
+          </div>
+          <div class="">
+            <label
+              v-for="(technique, index) in techniques"
+              :key="index"
+              class="pl-2 mt-2 mr-2 bg-gray-300 rounded w-auto"
+              style="display: inline-flex"
+            >
+              {{ technique.technique }}
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 mt-1 ml-2 mr-1 cursor-pointer"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  @click="removeTechnique(index)"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </span>
+            </label>
+          </div>
+        </div>
       </div>
 
       <button
@@ -210,21 +269,29 @@ export default {
   },
 
   setup(props) {
-    const { errors, project, pictures, getProject, updateProject } =
-      useProjects();
+    const {
+      addTechniques,
+      errors,
+      project,
+      pictures,
+      techniques,
+      getProject,
+      updateProject,
+    } = useProjects();
 
     onMounted(getProject(props.id));
 
     const saveProject = async () => {
+      await addTechniques(techniques.value); //imported from project.js
       await updateProject(props.id, { form: project.value, file });
     };
 
     let file = reactive(null);
     let imagePreview = ref(null);
     let isImageChanged = ref(false);
+    let technique = ref(null);
 
     function onFileSelected(event) {
-      //   project.value.old_image = project.value.image;
       file = event.target.files[0];
 
       let reader = new FileReader();
@@ -234,16 +301,29 @@ export default {
         imagePreview.value = event.target.result;
       };
     }
+    const removeTechnique = (index) => {
+      console.log(index);
+      techniques.value.splice(index, 1);
+    };
+    const addTechnique = () => {
+      techniques.value.push({ technique: technique.value });
+      technique.value = "";
+      console.log(techniques.value);
+    };
 
     return {
       isImageChanged,
       pictures,
+      techniques,
+      technique,
       errors,
       file,
       project,
       onFileSelected,
       imagePreview,
       saveProject,
+      removeTechnique,
+      addTechnique,
     };
   },
 };

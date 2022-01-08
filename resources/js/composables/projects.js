@@ -6,6 +6,7 @@ export default function useProjects() {
     const projects = ref([]);
     const project = ref([]);
     const pictures = ref([]);
+    const techniques = ref([]);
     const router = useRouter();
     const errors = ref("");
 
@@ -18,6 +19,7 @@ export default function useProjects() {
         let response = await axios.get("/api/projects/" + id);
         project.value = response.data.project;
         pictures.value = response.data.pictures;
+        techniques.value = response.data.techniques;
     };
     let fd = new FormData();
     const storeProject = async (data) => {
@@ -45,9 +47,14 @@ export default function useProjects() {
             console.log("i: " + i);
         }
     };
+    const addTechniques = async (techniques) => {
+        for (var i = 0; i < techniques.length; i++) {
+            console.log(techniques[i]);
+            fd.append("techniques[" + i + "]", techniques[i]["technique"]);
+        }
+    };
 
     const updateProject = async (id, data) => {
-        let fd = new FormData();
         fd.append("_method", "patch");
         fd.append("new_image", data.file);
         fd.append("image", data.form.image);
@@ -79,6 +86,7 @@ export default function useProjects() {
         projects,
         project,
         pictures,
+        techniques,
         errors,
         getProjects,
         getProject,
@@ -86,5 +94,6 @@ export default function useProjects() {
         updateProject,
         destroyProject,
         addGallery,
+        addTechniques,
     };
 }

@@ -147,7 +147,7 @@
           </div>
         </div>
         <div class="mb-3">
-          <label for="formFile" class="form-label">Image</label>
+          <label for="formFile" class="form-label">Preview Image</label>
           <input
             @change="onFileSelected"
             class="form-control"
@@ -174,7 +174,64 @@
           </div>
         </div>
       </div>
-
+      <div class="form-group">
+        <label for="description">Techniques</label>
+        <div class="form-control h-48">
+          <div class="d-flex">
+            <input
+              @keyup.enter="addTechnique"
+              type="text"
+              class="
+                block
+                mt-1
+                w-full
+                rounded-md
+                border-gray-300
+                shadow-sm
+                focus:border-indigo-300
+                focus:ring
+                focus:ring-indigo-200
+                focus:ring-opacity-50
+              "
+              v-model="technique"
+            /><button
+              style="background: #77b6ea; color: #fff"
+              type="button"
+              class="rounded-md shadow-sm px-2 mx-1 mt-1"
+              @click="addTechnique"
+            >
+              Add
+            </button>
+          </div>
+          <div class="">
+            <label
+              v-for="(technique, index) in techniques"
+              :key="index"
+              class="pl-2 mt-2 mr-2 bg-gray-300 rounded w-auto"
+              style="display: inline-flex"
+            >
+              {{ technique.technique }}
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 mt-1 ml-2 mr-1 cursor-pointer"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  @click="removeTechnique(index)"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
       <button
         type="submit"
         class="
@@ -226,10 +283,13 @@ export default {
     });
     let file = reactive(null);
     let imagePreview = ref(null);
+    let technique = ref(null);
+    let techniques = reactive([]);
 
-    const { errors, storeProject, addGallery } = useProjects();
+    const { errors, storeProject, addGallery, addTechniques } = useProjects();
 
     const saveProject = async () => {
+      await addTechniques(techniques);
       await storeProject({ form: form, file });
     };
     function onFileSelected(event) {
@@ -244,15 +304,27 @@ export default {
     const handleImages = (files) => {
       addGallery(files);
     };
+    const addTechnique = () => {
+      techniques.push({ technique: technique.value });
+      technique.value = "";
+    };
+    const removeTechnique = (index) => {
+      console.log(index);
+      techniques.splice(index, 1);
+    };
 
     return {
       form,
+      addTechnique,
+      technique,
+      techniques,
       errors,
       saveProject,
       onFileSelected,
       imagePreview,
       file,
       handleImages,
+      removeTechnique,
     };
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <!-- Page Content -->
   <div class="container bg-white shadow">
-    <!-- Portfolio Item Heading {{ pictures }}-->
+    <!-- Portfolio Item Heading {{ techniques }}-->
     <div class="d-flex justify-content-between">
       <h1 class="py-2 text-center"></h1>
       <h1 class="py-2 text-center">
@@ -42,7 +42,7 @@
         <!-- Single item -->
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <h3 class="my-3">Project Description</h3>
         <p>
           {{ project.description }}
@@ -59,6 +59,16 @@
             <a href="http://admin.yadgarsoft.com/">{{ project.project_url }}</a>
           </li>
         </ul>
+        <h3 class="my-3">Project Techniques</h3>
+        <ul class="list-group list-group-horizontal">
+          <li
+            v-for="technique in techniques"
+            :key="technique.id"
+            class="text-capitalize bg-gray-300 rounded-md px-2 mx-1"
+          >
+            {{ technique.technique }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -72,6 +82,7 @@ export default {
   props: {
     project: { type: Object },
     pictures: { type: Object },
+    techniques: { type: Object },
   },
   components: { Carousel },
   emits: ["close"],

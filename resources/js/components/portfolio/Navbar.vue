@@ -75,7 +75,7 @@ nav {
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
-  background-color: #fdffff !important;
+  background-color: #eef5db !important;
 }
 
 router-link:hover {
