@@ -15,6 +15,9 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        <link rel="shortcut icon" href="/images/fav.png">
+{{-- <link rel="stylesheet" type="text/css" href="{{ url('css/style.css') }}"> --}}
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100" id="app"> 

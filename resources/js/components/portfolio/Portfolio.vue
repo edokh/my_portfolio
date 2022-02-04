@@ -29,7 +29,7 @@
               class="bg-white rounded shadow-sm cursor-pointer"
             >
               <img
-                :src="'http://127.0.0.1:8000/images/' + project.image"
+                :src="'/images/' + project.image"
                 alt=""
                 class="img-fluid card-img-top"
               />

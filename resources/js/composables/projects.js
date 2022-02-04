@@ -17,6 +17,7 @@ export default function useProjects() {
 
     const getProject = async (id) => {
         let response = await axios.get("/api/projects/" + id);
+        console.log(response);
         project.value = response.data.project;
         pictures.value = response.data.pictures;
         techniques.value = response.data.techniques;

@@ -17,11 +17,7 @@
 
       <div class="row">
         <div class="col-lg-4">
-          <img
-            src="http://127.0.0.1:8000/images/about.jpg"
-            class="img-fluid"
-            alt=""
-          />
+          <img src="/images/about.jpg" class="img-fluid" alt="" />
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content">
           <h3>Software Developer</h3>

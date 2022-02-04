@@ -1,6 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg">
-    <b class="text-lg cursor-pointer ml-2" @click="goHome">EDO</b>
+  <nav class="navbar navbar-expand-lg bg-gray-500">
+    <!-- <b class="text-lg cursor-pointer ml-2" @click="goHome">EDO</b> -->
+    <img alt="avatar" class="w-16" src="images/logo.png" />
     <button
       class="navbar-toggler"
       type="button"

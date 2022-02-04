@@ -20,7 +20,6 @@
       </p>
     </div>
   </div>
-
   <div class="container">
     <h2 class="my-8">Edit Project</h2>
     <form
@@ -156,11 +155,7 @@
         <div v-if="imagePreview != null"></div>
         <img
           v-if="project.image != undefined"
-          :src="
-            isImageChanged
-              ? imagePreview
-              : 'http://127.0.0.1:8000/images/' + project.image
-          "
+          :src="isImageChanged ? imagePreview : '/images/' + project.image"
           alt=""
           style="height: 200px"
         />
