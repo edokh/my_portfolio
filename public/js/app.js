@@ -22525,17 +22525,6 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "progress-bar",
   role: "progressbar",
   style: {
-    "width": "25%"
-  },
-  "aria-valuenow": "25",
-  "aria-valuemin": "0",
-  "aria-valuemax": "100"
-}, " 25% ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "progress"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "progress-bar",
-  role: "progressbar",
-  style: {
     "width": "90%"
   },
   "aria-valuenow": "25",
