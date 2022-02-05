@@ -30,9 +30,12 @@
             line-height: 56px;
           "
         >
-          Edo Khudeeda
+          EDO KHUDEEDA
         </h1>
-        <h2 style="color: #eef5db; text-shadow: 2px 1px 15px #000000">
+        <h2
+          style="text-shadow: 2px 1px 15px #000000"
+          class="text-4xl text-yellow-100 mb-3"
+        >
           I'm a software developer in Erbil
         </h2>
         <router-link class="nav-link btn btn-info" :class="about" to="/about"
