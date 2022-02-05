@@ -33,7 +33,7 @@
           Edo Khudeeda
         </h1>
         <h2 style="color: #eef5db; text-shadow: 2px 1px 15px #000000">
-          I'm a professional software developer from Erbil
+          I'm a software developer in Erbil
         </h2>
         <router-link class="nav-link btn btn-info" :class="about" to="/about"
           >About Me</router-link
@@ -53,9 +53,3 @@ export default {
   setup() {},
 };
 </script>
-
-<style>
-header {
-  /* background: url("https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"); */
-}
-</style>
